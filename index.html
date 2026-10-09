@@ -524,64 +524,6 @@ body {
   font-size: 0.7rem; color: rgba(255,255,255,0.4); text-align: center;
 }
 
-/* ===== UNO ===== */
-#unoGame .game-body { flex-direction:column; gap:10px; padding:15px; }
-.uno-table {
-  display: flex; flex-direction: column; gap: 15px; align-items: center; width: 100%;
-}
-.uno-status { font-size:1rem; font-weight:700; color:var(--gold); text-align:center; min-height:30px; }
-.uno-piles {
-  display: flex; gap: 20px; align-items:center; justify-content:center;
-}
-.uno-card {
-  width: 60px; height: 90px;
-  border-radius: 10px;
-  display: flex; align-items:center; justify-content:center;
-  font-size: 1.5rem; font-weight: 900;
-  border: 3px solid rgba(255,255,255,0.3);
-  cursor: pointer;
-  transition: all 0.3s;
-  position: relative;
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
-  user-select: none;
-  flex-shrink: 0;
-}
-.uno-card:hover { transform: translateY(-8px) scale(1.05); }
-.uno-card.back { background: linear-gradient(135deg, #1a237e, #283593); font-size: 1.8rem; cursor: pointer; }
-.uno-card .card-num { font-size: 1.4rem; line-height: 1; }
-.uno-card .card-top { position:absolute; top:4px; left:6px; font-size:0.7rem; font-weight:900; }
-.uno-card .card-bot { position:absolute; bottom:4px; right:6px; font-size:0.7rem; font-weight:900; transform:rotate(180deg); }
-
-.uno-ai-hand { display:flex; gap:5px; justify-content:center; flex-wrap:wrap; }
-.uno-ai-card {
-  width: 45px; height: 65px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #1a237e, #283593);
-  border: 2px solid rgba(255,255,255,0.2);
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-}
-.uno-player-hand { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; overflow-x: auto; }
-.uno-deck { width:60px; height:90px; border-radius:10px; background: linear-gradient(135deg,#1a237e,#4a148c); border:3px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.5rem; }
-.uno-color-pick {
-  display: none; position: fixed; top:50%; left:50%; transform: translate(-50%,-50%);
-  background: rgba(0,0,0,0.95);
-  border: 2px solid var(--gold);
-  border-radius: 20px;
-  padding: 25px;
-  z-index: 200;
-  text-align: center;
-}
-.uno-color-pick.show { display: block; }
-.uno-color-pick h3 { color: var(--gold); margin-bottom: 15px; }
-.color-btns { display: flex; gap: 12px; justify-content:center; }
-.color-btn {
-  width: 55px; height: 55px; border-radius: 50%;
-  border: 3px solid rgba(255,255,255,0.5);
-  cursor: pointer; transition: all 0.3s;
-  font-size: 1.5rem;
-}
-.color-btn:hover { transform: scale(1.2); }
-
 /* پیام ها */
 .notif {
   position: fixed; top: 80px; left: 50%; transform: translateX(-50%) translateY(-20px);
@@ -868,10 +810,6 @@ body{
  .side-panel{
    width:100%!important;
  }
- .uno-player-hand{
-   justify-content:flex-start!important;
-   padding-bottom:10px;
- }
  canvas{
    image-rendering:auto;
  }
@@ -1027,7 +965,6 @@ body.light-mode .name-card,
 body.light-mode .side-panel,
 body.light-mode .settings-panel,
 body.light-mode .rps-score-box,
-body.light-mode .uno-card,
 body.light-mode .cod-ammo{
   background:rgba(255,255,255,.92) !important;
   color:#111827 !important;
@@ -1142,11 +1079,6 @@ body.light-mode .game-header,
 body.light-mode .manch-store{
   color:#111827 !important;
 }
-
-body.light-mode .uno-card{
-  border-color:#111827 !important;
-}
-
 
 /* ===== استایل های مار و پله ===== */
 #ludoGame .game-body {
@@ -1605,6 +1537,68 @@ body.light-mode .floating-tooltip{
   border-color: rgba(17,24,39,0.2);
 }
 
+
+/* ===== کیفیت گرافیک قابل‌انتخاب ===== */
+body.graphics-low *, body.graphics-low *::before, body.graphics-low *::after {
+  animation: none !important;
+  transition-duration: .01ms !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+body.graphics-low .game-card, body.graphics-low .name-card,
+body.graphics-low .settings-panel, body.graphics-low .side-panel,
+body.graphics-low .rps-fighter, body.graphics-low .rps-score-box,
+body.graphics-low .doz-cell, body.graphics-low .chess-board,
+body.graphics-low .sl-board, body.graphics-low .achievement-popup {
+  filter: none !important;
+}
+body.graphics-medium .game-card, body.graphics-medium .name-card,
+body.graphics-medium .settings-panel, body.graphics-medium .side-panel,
+body.graphics-medium .rps-score-box, body.graphics-medium .chess-board,
+body.graphics-medium .sl-board, body.graphics-medium .achievement-popup {
+  backdrop-filter: blur(7px) !important;
+  -webkit-backdrop-filter: blur(7px) !important;
+}
+body.graphics-high .game-card, body.graphics-high .name-card,
+body.graphics-high .settings-panel, body.graphics-high .side-panel,
+body.graphics-high .rps-score-box, body.graphics-high .chess-board,
+body.graphics-high .sl-board, body.graphics-high .achievement-popup {
+  box-shadow: 0 8px 28px rgba(0,0,0,.30), 0 0 18px rgba(255,215,0,.12) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+/* ===== مار بازی نوکیا ===== */
+#snakeClassicGame .game-body.classic-snake-body {
+  flex-direction: column; justify-content: flex-start; gap: 12px; padding: 16px;
+  overflow-y: auto;
+}
+.classic-snake-hud {
+  display:flex; justify-content:space-between; align-items:center; gap:30px;
+  width:min(90vw,420px); padding:10px 15px; border:3px solid #306230;
+  background:#8bac0f; color:#0f380f; font-family:monospace; font-size:1rem; font-weight:900;
+}
+.classic-snake-hud strong { font-size:1.2rem; margin-right:5px; }
+.classic-snake-screen-wrap {
+  position:relative; width:min(90vw,420px); aspect-ratio:1; border:8px solid #306230;
+  border-radius:8px; overflow:hidden; background:#9bbc0f; box-shadow:inset 0 0 0 3px #0f380f;
+}
+#classicSnakeCanvas { display:block; width:100%; height:100%; image-rendering:pixelated; touch-action:none; }
+.classic-snake-controls { display:flex; flex-direction:column; align-items:center; gap:7px; width:min(90vw,280px); }
+.classic-snake-horizontal { display:flex; gap:10px; justify-content:center; }
+.classic-snake-controls button {
+  min-width:58px; min-height:48px; border:2px solid #0f380f; border-radius:8px;
+  background:#8bac0f; color:#0f380f; font-size:1.3rem; font-weight:900; touch-action:manipulation;
+}
+.classic-snake-controls button:active { background:#306230; color:#9bbc0f; }
+.classic-snake-hint { max-width:90vw; text-align:center; color:#8bac0f; font-size:.78rem; }
+#classicSnakeOverlay { position:absolute; padding:20px; }
+#classicSnakeOverlay .overlay-title, #classicSnakeOverlay .overlay-sub { color:#9bbc0f; }
+#classicSnakeOverlay .overlay-btn { color:#9bbc0f; background:#0f380f; border:2px solid #8bac0f; }
+body.light-mode .classic-snake-hud { color:#0f380f !important; }
+
 </style>
 </head>
 <body>
@@ -1653,9 +1647,10 @@ body.light-mode .floating-tooltip{
   
   <div class="setting-item">
     <h3>🎨 کیفیت گرافیک</h3>
-    <select class="setting-select" onchange="changeGraphics(this.value)">
-      <option value="ultra">Ultra</option>
-      <option value="medium">Medium</option>
+    <select class="setting-select" id="graphicsQuality" aria-label="کیفیت گرافیک" onchange="changeGraphics(this.value)">
+      <option value="low">کم</option>
+      <option value="medium" selected>متوسط</option>
+      <option value="high">زیاد</option>
     </select>
   </div>
 
@@ -1703,6 +1698,10 @@ body.light-mode .floating-tooltip{
     <h4>🐍 مار و پله</h4>
     <p>تاس بینداز و از خانه ۱ به ۱۰۰ برو. مارها تو را پایین می‌برند، پله‌ها بالا. بازی دو نفره!</p>
   </div>
+  <div class="game-info-item">
+    <h4>📟 مار بازی</h4>
+    <p>نسخهٔ کلاسیک به سبک نوکیا: غذا بخور، طول مار را بیشتر کن، به دیوار یا بدن خودت برخورد نکن. با کلیدهای جهت یا دکمه‌های روی صفحه حرکت کن.</p>
+  </div>
   
   <div class="game-info-item">
     <h4>⚽ پنالتی</h4>
@@ -1712,11 +1711,6 @@ body.light-mode .floating-tooltip{
     <h4>🔫 ندای وظیفه</h4>
     <p>بازی تیراندازی! با ماوس دشمنان را هدف بگیر و کلیک کن. مراقب سلامتیت باش. موجودیت ببند تا برنده بشی!</p>
   </div>
-  <div class="game-info-item">
-    <h4>🃏 اونو کارت</h4>
-    <p>کارت‌هایی که رنگ یا عدد یکسان با کارت روی میز دارند را بینداز. کارت‌های ویژه: +2، +4، برعکس، رد کردن، تغییر رنگ. اول کارت‌هایت تموم شه!</p>
-  </div>
-  
   <div class="creator-badge">
     <p>🎮 <strong>گیم هاب پرهیزگار</strong></p>
     <p>سازنده: <strong>ماهان زراعت پیشه</strong></p>
@@ -1773,6 +1767,12 @@ body.light-mode .floating-tooltip{
       <p>تاس بینداز، پیش برو</p>
       <div class="badge" style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid #10b981"></div>
     </div>
+    <div class="game-card" style="--card-color1:#9bbc0f;--card-color2:#306230" onclick="openGame('snakeClassic')">
+      <span class="icon">📟</span>
+      <h3>مار بازی</h3>
+      <p>مار کلاسیک نوکیا</p>
+      <div class="badge" style="background:rgba(155,188,15,0.2);color:#9bbc0f;border:1px solid #8bac0f">CLASSIC</div>
+    </div>
     <div class="game-card" style="--card-color1:#16a34a;--card-color2:#15803d" onclick="openGame('penalty')">
       <span class="icon">⚽</span>
       <h3>پنالتی</h3>
@@ -1784,12 +1784,6 @@ body.light-mode .floating-tooltip{
       <h3>ندای وظیفه</h3>
       <p>روی دشمن ها کلیک کن تا شلیک کنی و آنها را نابود کن!</p>
       <div class="badge" style="background:rgba(6,182,212,0.2);color:#22d3ee;border:1px solid #06b6d4"></div>
-    </div>
-    <div class="game-card" style="--card-color1:#ec4899;--card-color2:#db2777" onclick="openGame('uno')">
-      <span class="icon">🃏</span>
-      <h3>اونو کارت</h3>
-      <p>بازی کارتی هیجان‌انگیز</p>
-      <div class="badge" style="background:rgba(236,72,153,0.2);color:#f472b6;border:1px solid #ec4899"></div>
     </div>
   </div>
 </div>
@@ -1897,6 +1891,38 @@ body.light-mode .floating-tooltip{
   </div>
 </div>
 
+<!-- مار بازی کلاسیک به سبک نوکیا -->
+<div class="game-screen" id="snakeClassicGame">
+  <div class="game-header">
+    <button class="back-btn" onclick="closeGame()">← برگشت</button>
+    <div class="game-title">📟 مار بازی</div>
+    <button class="back-btn" onclick="resetClassicSnake()">↺ ریست</button>
+  </div>
+  <div class="game-body classic-snake-body">
+    <div class="classic-snake-hud">
+      <div>امتیاز <strong id="classicSnakeScore">0</strong></div>
+      <div>رکورد <strong id="classicSnakeBest">0</strong></div>
+    </div>
+    <div class="classic-snake-screen-wrap">
+      <canvas id="classicSnakeCanvas" width="400" height="400" aria-label="صفحهٔ بازی مار" role="img"></canvas>
+      <div class="game-overlay show" id="classicSnakeOverlay">
+        <div class="overlay-title" id="classicSnakeOverlayTitle">📟 مار بازی</div>
+        <div class="overlay-sub" id="classicSnakeOverlayText">غذا را بخور و مراقب برخورد باش!</div>
+        <button class="overlay-btn" id="classicSnakeStartBtn" onclick="startClassicSnake()">شروع بازی</button>
+      </div>
+    </div>
+    <div class="classic-snake-controls" aria-label="کنترل‌های مار">
+      <button type="button" onclick="setClassicSnakeDirection('up')" aria-label="بالا">▲</button>
+      <div class="classic-snake-horizontal">
+        <button type="button" onclick="setClassicSnakeDirection('left')" aria-label="چپ">◀</button>
+        <button type="button" onclick="setClassicSnakeDirection('down')" aria-label="پایین">▼</button>
+        <button type="button" onclick="setClassicSnakeDirection('right')" aria-label="راست">▶</button>
+      </div>
+    </div>
+    <p class="classic-snake-hint">کیبورد: جهت‌ها یا WASD · موبایل: دکمه‌ها یا کشیدن انگشت روی صفحه</p>
+  </div>
+</div>
+
 <!-- کد های منچ در صورت تصمیم برگشتن بازی -->
 <div class="game-screen" id="ludoGame">
   <div class="game-header">
@@ -2000,49 +2026,6 @@ body.light-mode .floating-tooltip{
   </div>
 </div>
 
-<!-- اونو -->
-<div class="game-screen" id="unoGame">
-  <div class="game-header">
-    <button class="back-btn" onclick="closeGame()">← برگشت</button>
-    <div class="game-title">🃏 اونو کارت</div>
-    <button class="back-btn" onclick="resetUno()">↺ ریست</button>
-  </div>
-  <div class="game-body">
-    <div class="uno-table">
-      <div style="text-align:center">
-        <div style="font-size:0.8rem;color:#888;margin-bottom:5px">ربات مدرسه پرهیزگار(<span id="unoAICount">7</span> کارت)</div>
-        <div class="uno-ai-hand" id="unoAIHand"></div>
-      </div>
-      <div class="uno-status" id="unoStatus">نوبت شما</div>
-      <div class="uno-piles">
-        <div style="text-align:center">
-          <div style="font-size:0.7rem;color:#888;margin-bottom:5px">کارت برگشتی</div>
-          <div class="uno-card" id="unoTopCard" style="background:red"></div>
-        </div>
-        <div style="text-align:center">
-          <div style="font-size:0.7rem;color:#888;margin-bottom:5px">بکش</div>
-          <div class="uno-deck" id="unoDeck" onclick="drawCard()">🃏</div>
-        </div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:0.8rem;color:#888;margin-bottom:5px">دست شما</div>
-        <div class="uno-player-hand" id="unoPlayerHand"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- انتخاب رنگ اونو -->
-<div class="uno-color-pick" id="unoColorPick">
-  <h3>رنگ انتخاب کن</h3>
-  <div class="color-btns">
-    <div class="color-btn" style="background:#ef4444" onclick="pickUnoColor('red')">🔴</div>
-    <div class="color-btn" style="background:#3b82f6" onclick="pickUnoColor('blue')">🔵</div>
-    <div class="color-btn" style="background:#22c55e" onclick="pickUnoColor('green')">🟢</div>
-    <div class="color-btn" style="background:#eab308" onclick="pickUnoColor('yellow')">🟡</div>
-  </div>
-</div>
-
 <!-- ================================================= -->
 <!--                 به جاوا اسکریپت خوش آمدید                 -->
 <!--   تمام بخش ها کامنت گذاری شدند توسط ماهان زراعت پیشه  -->
@@ -2095,7 +2078,7 @@ function showScreen(id) {
 let currentGame = null;
 function openGame(g) {
   currentGame = g;
-  const ids = {rps:'rpsGame',doz:'dozGame',chess:'chessGame',snake:'snakeGame',ludo:'ludoGame',cod:'codGame',uno:'unoGame',penalty:'penaltyGame'};
+  const ids = {rps:'rpsGame',doz:'dozGame',chess:'chessGame',snake:'snakeGame',snakeClassic:'snakeClassicGame',ludo:'ludoGame',cod:'codGame',penalty:'penaltyGame'};
   document.querySelectorAll('.game-screen').forEach(s => s.classList.remove('active'));
   const el = document.getElementById(ids[g]);
   if(!el) return;
@@ -2104,14 +2087,16 @@ function openGame(g) {
   if (g==='doz') initDoz();
   if (g==='chess') initChess();
   if (g==='snake') initSnake();
+  if (g==='snakeClassic') initClassicSnake();
   if (g==='ludo') initLudo();
   if (g==='cod') initCOD();
-  if (g==='uno') initUno();
   if (g==='penalty') initPenalty();
 }
 
 function closeGame() {
   if (codAnimFrame) { cancelAnimationFrame(codAnimFrame); codAnimFrame = null; }
+  if (classicSnakeTimer) { clearInterval(classicSnakeTimer); classicSnakeTimer = null; }
+  if (classicSnakeState) classicSnakeState.running = false;
   document.querySelectorAll('.game-screen').forEach(s => s.classList.remove('active'));
 }
 
@@ -2494,6 +2479,206 @@ function movePlayer(player, roll) {
 }
 function resetSnake(){initSnake();}
 
+// ===== مار بازی کلاسیک نوکیا =====
+const CLASSIC_SNAKE_GRID = 20;
+const CLASSIC_SNAKE_CELL = 20;
+const CLASSIC_SNAKE_DIRECTIONS = {
+  up:{x:0,y:-1}, down:{x:0,y:1}, left:{x:-1,y:0}, right:{x:1,y:0}
+};
+const CLASSIC_SNAKE_OPPOSITE = {up:'down',down:'up',left:'right',right:'left'};
+let classicSnakeState = null;
+let classicSnakeTimer = null;
+let classicSnakePointerStart = null;
+let classicSnakeControlsBound = false;
+
+function initClassicSnake(){
+  if(classicSnakeTimer){ clearInterval(classicSnakeTimer); classicSnakeTimer = null; }
+  classicSnakeState = {
+    body:[{x:8,y:10},{x:7,y:10},{x:6,y:10}],
+    direction:'right', nextDirection:'right', food:null,
+    score:0, running:false, gameOver:false
+  };
+  classicSnakeState.food = createClassicSnakeFood();
+  const best = getClassicSnakeBest();
+  const bestEl = document.getElementById('classicSnakeBest');
+  if(bestEl) bestEl.textContent = best;
+  const scoreEl = document.getElementById('classicSnakeScore');
+  if(scoreEl) scoreEl.textContent = '0';
+  const overlay = document.getElementById('classicSnakeOverlay');
+  const title = document.getElementById('classicSnakeOverlayTitle');
+  const message = document.getElementById('classicSnakeOverlayText');
+  const button = document.getElementById('classicSnakeStartBtn');
+  if(overlay) overlay.classList.add('show');
+  if(title) title.textContent = '📟 مار بازی';
+  if(message) message.textContent = 'غذا را بخور و مراقب برخورد باش!';
+  if(button) button.textContent = 'شروع بازی';
+  bindClassicSnakeControls();
+  drawClassicSnake();
+}
+function getClassicSnakeBest(){
+  try { return Math.max(0, Number(localStorage.getItem('gh_classic_snake_best')) || 0); }
+  catch(e) { return 0; }
+}
+function createClassicSnakeFood(){
+  if(!classicSnakeState) return {x:15,y:10};
+  const free=[];
+  for(let y=0;y<CLASSIC_SNAKE_GRID;y++){
+    for(let x=0;x<CLASSIC_SNAKE_GRID;x++){
+      if(!classicSnakeState.body.some(part=>part.x===x&&part.y===y)) free.push({x,y});
+    }
+  }
+  if(!free.length) return null;
+  return free[Math.floor(Math.random()*free.length)];
+}
+function drawClassicSnake(){
+  const canvas=document.getElementById('classicSnakeCanvas');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  if(!ctx) return;
+  const low=document.body.classList.contains('graphics-low');
+  const high=document.body.classList.contains('graphics-high');
+  const size=CLASSIC_SNAKE_CELL;
+  ctx.imageSmoothingEnabled=false;
+  ctx.fillStyle='#9bbc0f';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  if(!low){
+    ctx.strokeStyle=high?'rgba(15,56,15,.16)':'rgba(15,56,15,.10)';
+    ctx.lineWidth=1;
+    for(let n=1;n<CLASSIC_SNAKE_GRID;n++){
+      ctx.beginPath();ctx.moveTo(n*size+.5,0);ctx.lineTo(n*size+.5,canvas.height);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(0,n*size+.5);ctx.lineTo(canvas.width,n*size+.5);ctx.stroke();
+    }
+  }
+  if(classicSnakeState?.food){
+    const f=classicSnakeState.food;
+    ctx.fillStyle='#0f380f';
+    ctx.fillRect(f.x*size+4,f.y*size+4,size-8,size-8);
+    if(high){ctx.fillStyle='#306230';ctx.fillRect(f.x*size+6,f.y*size+6,4,4);}
+  }
+  if(classicSnakeState){
+    classicSnakeState.body.forEach((part,index)=>{
+      ctx.fillStyle=index===0?'#0f380f':'#306230';
+      const pad=high?1:2;
+      ctx.fillRect(part.x*size+pad,part.y*size+pad,size-pad*2,size-pad*2);
+      if(index===0){
+        ctx.fillStyle='#9bbc0f';
+        const eye=3;
+        if(classicSnakeState.direction==='right'||classicSnakeState.direction==='left'){
+          const ex=classicSnakeState.direction==='right'?part.x*size+13:part.x*size+4;
+          ctx.fillRect(ex,part.y*size+5,eye,eye);
+          ctx.fillRect(ex,part.y*size+12,eye,eye);
+        }else{
+          const ey=classicSnakeState.direction==='down'?part.y*size+13:part.y*size+4;
+          ctx.fillRect(part.x*size+5,ey,eye,eye);
+          ctx.fillRect(part.x*size+12,ey,eye,eye);
+        }
+      }
+    });
+  }
+}
+function startClassicSnake(){
+  if(!classicSnakeState || classicSnakeState.gameOver) initClassicSnake();
+  if(!classicSnakeState || classicSnakeState.gameOver) return;
+  classicSnakeState.running=true;
+  const overlay=document.getElementById('classicSnakeOverlay');
+  if(overlay) overlay.classList.remove('show');
+  scheduleClassicSnakeTick();
+}
+function scheduleClassicSnakeTick(){
+  if(classicSnakeTimer) clearInterval(classicSnakeTimer);
+  if(!classicSnakeState || !classicSnakeState.running || classicSnakeState.gameOver) return;
+  const delay=Math.max(65,145-Math.floor(classicSnakeState.score/3)*7);
+  classicSnakeTimer=setInterval(tickClassicSnake,delay);
+}
+function setClassicSnakeDirection(direction){
+  if(!classicSnakeState || classicSnakeState.gameOver) return;
+  if(!CLASSIC_SNAKE_DIRECTIONS[direction]) return;
+  if(CLASSIC_SNAKE_OPPOSITE[classicSnakeState.direction]===direction) return;
+  classicSnakeState.nextDirection=direction;
+}
+function tickClassicSnake(){
+  const state=classicSnakeState;
+  if(!state || !state.running || state.gameOver) return;
+  state.direction=state.nextDirection;
+  const vector=CLASSIC_SNAKE_DIRECTIONS[state.direction];
+  const head={x:state.body[0].x+vector.x,y:state.body[0].y+vector.y};
+  const eats=!!state.food && head.x===state.food.x && head.y===state.food.y;
+  const collisionBody=eats?state.body:state.body.slice(0,-1);
+  if(head.x<0||head.y<0||head.x>=CLASSIC_SNAKE_GRID||head.y>=CLASSIC_SNAKE_GRID||collisionBody.some(part=>part.x===head.x&&part.y===head.y)){
+    endClassicSnake();
+    return;
+  }
+  state.body.unshift(head);
+  if(eats){
+    state.score++;
+    state.food=createClassicSnakeFood();
+    const scoreEl=document.getElementById('classicSnakeScore');
+    if(scoreEl) scoreEl.textContent=state.score;
+    const best=getClassicSnakeBest();
+    if(state.score>best){
+      try{localStorage.setItem('gh_classic_snake_best',String(state.score));}catch(e){}
+      const bestEl=document.getElementById('classicSnakeBest');
+      if(bestEl) bestEl.textContent=state.score;
+    }
+    if(typeof updateClassicSnakeAchievements==='function') updateClassicSnakeAchievements(state.score);
+    if(!state.food){
+      state.gameOver=true;state.running=false;
+      if(classicSnakeTimer){clearInterval(classicSnakeTimer);classicSnakeTimer=null;}
+      showClassicSnakeOverlay('🏆 عالی بود!','تمام خانه‌ها را پر کردی.','بازی دوباره');
+      drawClassicSnake();
+      return;
+    }
+    scheduleClassicSnakeTick();
+  }else{
+    state.body.pop();
+  }
+  drawClassicSnake();
+}
+function endClassicSnake(){
+  if(!classicSnakeState) return;
+  classicSnakeState.gameOver=true;
+  classicSnakeState.running=false;
+  if(classicSnakeTimer){clearInterval(classicSnakeTimer);classicSnakeTimer=null;}
+  showClassicSnakeOverlay('💥 بازی تمام شد','امتیاز تو: '+classicSnakeState.score,'بازی دوباره');
+  drawClassicSnake();
+}
+function showClassicSnakeOverlay(title,message,buttonText){
+  const overlay=document.getElementById('classicSnakeOverlay');
+  if(overlay) overlay.classList.add('show');
+  const t=document.getElementById('classicSnakeOverlayTitle');
+  const m=document.getElementById('classicSnakeOverlayText');
+  const b=document.getElementById('classicSnakeStartBtn');
+  if(t)t.textContent=title;
+  if(m)m.textContent=message;
+  if(b)b.textContent=buttonText;
+}
+function resetClassicSnake(){initClassicSnake();}
+function bindClassicSnakeControls(){
+  if(classicSnakeControlsBound) return;
+  classicSnakeControlsBound=true;
+  document.addEventListener('keydown',event=>{
+    const screen=document.getElementById('snakeClassicGame');
+    if(!screen || !screen.classList.contains('active')) return;
+    const key=event.key.toLowerCase();
+    const keyMap={arrowup:'up',w:'up',arrowdown:'down',s:'down',arrowleft:'left',a:'left',arrowright:'right',d:'right'};
+    const direction=keyMap[key];
+    if(direction){event.preventDefault();setClassicSnakeDirection(direction);}
+    if((key===' '||key==='enter') && classicSnakeState && !classicSnakeState.running && !classicSnakeState.gameOver){event.preventDefault();startClassicSnake();}
+  });
+  const canvas=document.getElementById('classicSnakeCanvas');
+  if(canvas){
+    canvas.addEventListener('pointerdown',event=>{classicSnakePointerStart={x:event.clientX,y:event.clientY};});
+    canvas.addEventListener('pointerup',event=>{
+      if(!classicSnakePointerStart) return;
+      const dx=event.clientX-classicSnakePointerStart.x;
+      const dy=event.clientY-classicSnakePointerStart.y;
+      classicSnakePointerStart=null;
+      if(Math.max(Math.abs(dx),Math.abs(dy))<18) return;
+      setClassicSnakeDirection(Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up'));
+    });
+  }
+}
+
 // ===== ندای وظیفه2 =====
 let codAnimFrame=null, codState={};
 function initCOD(){
@@ -2672,147 +2857,6 @@ document.getElementById('codCanvas').addEventListener('click',function(e){
 });
 document.addEventListener('keydown',e=>{if(e.key==='r'||e.key==='R'){if(codState.gameOver) return; codState.ammo=codState.maxAmmo; updateCODUI(); showNotif('خشاب پر شد! 🔫');}});
 function resetCOD(){if(codAnimFrame){cancelAnimationFrame(codAnimFrame);codAnimFrame=null;} initCOD();}
-
-// ===== اونو =====
-const UNO_COLORS={red:'#ef4444',blue:'#3b82f6',green:'#22c55e',yellow:'#eab308'};
-const UNO_COLOR_NAMES={red:'قرمز',blue:'آبی',green:'سبز',yellow:'زرد'};
-let unoState;
-function initUno(){
-  const deck=buildUnoDeck();
-  shuffle(deck);
-  const playerHand=deck.splice(0,7);
-  const aiHand=deck.splice(0,7);
-  let topIdx=deck.findIndex(c=>c.type==='number');
-  if(topIdx===-1) topIdx=0;
-  const topCard=deck.splice(topIdx,1)[0];
-  unoState={deck,playerHand,aiHand,topCard,turn:'player',gameOver:false,pendingColor:null,pendingWild:null};
-  renderUno();
-  document.getElementById('unoStatus').textContent='نوبت شما';
-}
-function buildUnoDeck(){
-  const colors=['red','blue','green','yellow'];
-  const cards=[];
-  colors.forEach(c=>{
-    [0,1,2,3,4,5,6,7,8,9,'skip','reverse','+2'].forEach(v=>{
-      cards.push({color:c,value:v,type:typeof v==='number'?'number':'action'});
-      if(v!==0) cards.push({color:c,value:v,type:typeof v==='number'?'number':'action'});
-    });
-  });
-  for(let i=0;i<4;i++){
-    cards.push({color:'black',value:'wild',type:'wild'});
-    cards.push({color:'black',value:'+4',type:'wild'});
-  }
-  return cards;
-}
-function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}}
-function canPlay(card){
-  const top=unoState.topCard;
-  if(card.type==='wild') return true;
-  if(card.color===top.color||card.color===unoState.pendingColor) return true;
-  if(card.value===top.value&&card.type===top.type) return true;
-  return false;
-}
-function getCardLabel(v){
-  if(v==='skip') return '🚫';
-  if(v==='reverse') return '↩️';
-  if(v==='+2') return '+2';
-  if(v==='+4') return '+4';
-  if(v==='wild') return '🌈';
-  return v;
-}
-function renderUnoCard(card,onclick,small=false){
-  const el=document.createElement('div');
-  el.className='uno-card';
-  if(small){el.style.width='45px';el.style.height='65px';el.style.fontSize='1rem';}
-  const bg=card.color==='black'?'linear-gradient(135deg,#1a1a2e,#16213e)':UNO_COLORS[card.color];
-  el.style.background=bg;
-  const lbl=getCardLabel(card.value);
-  el.innerHTML=`<div class="card-top">${lbl}</div><div class="card-num">${lbl}</div><div class="card-bot">${lbl}</div>`;
-  if(onclick) el.onclick=onclick;
-  return el;
-}
-function renderUno(){
-  if(!unoState) return;
-  const topEl=document.getElementById('unoTopCard');
-  const top=unoState.topCard;
-  const bg=unoState.pendingColor?UNO_COLORS[unoState.pendingColor]:(top.color==='black'?'linear-gradient(135deg,#1a1a2e,#16213e)':UNO_COLORS[top.color]);
-  topEl.style.background=bg;
-  topEl.innerHTML=`<div class="card-top">${getCardLabel(top.value)}</div><div class="card-num">${getCardLabel(top.value)}</div><div class="card-bot">${getCardLabel(top.value)}</div>`;
-  const ai=document.getElementById('unoAIHand'); ai.innerHTML='';
-  unoState.aiHand.forEach(()=>{const c=document.createElement('div');c.className='uno-ai-card';ai.appendChild(c);});
-  document.getElementById('unoAICount').textContent=unoState.aiHand.length;
-  const ph=document.getElementById('unoPlayerHand'); ph.innerHTML='';
-  unoState.playerHand.forEach((card,i)=>{
-    const playable=canPlay(card)&&unoState.turn==='player'&&!unoState.gameOver;
-    const el=renderUnoCard(card,playable?()=>playUnoCard(i):null);
-    if(!playable) el.style.opacity='0.5';
-    if(playable) el.style.transform='translateY(-5px)';
-    ph.appendChild(el);
-  });
-}
-function playUnoCard(i){
-  if(unoState.turn!=='player'||unoState.gameOver) return;
-  const card=unoState.playerHand[i];
-  if(!canPlay(card)) return;
-  unoState.playerHand.splice(i,1);
-  unoState.topCard=card; unoState.pendingColor=null;
-  if(unoState.playerHand.length===0){endUno('player');return;}
-  if(card.type==='wild'){
-    document.getElementById('unoColorPick').classList.add('show');
-    return;
-  }
-  applyUnoAction(card,'player');
-}
-function applyUnoAction(card,playedBy){
-  if(card.value==='+2'){const count=2;if(playedBy==='player')for(let i=0;i<count;i++)drawFromDeck('ai');else for(let i=0;i<count;i++)drawFromDeck('player');}
-  if(card.value==='skip'){unoState.turn=playedBy;}
-  if(card.value==='reverse'){unoState.turn=playedBy;}
-  renderUno();
-  if(playedBy==='player'){unoState.turn='ai';document.getElementById('unoStatus').textContent='نوبت ربات مدرسه پرهیزگار...';setTimeout(unoAI,1000);}
-  else{unoState.turn='player';document.getElementById('unoStatus').textContent='نوبت شما';}
-}
-function pickUnoColor(color){
-  document.getElementById('unoColorPick').classList.remove('show');
-  unoState.pendingColor=color;
-  if(unoState.topCard.value==='+4'){for(let i=0;i<4;i++)drawFromDeck('ai');}
-  renderUno();
-  unoState.turn='ai'; document.getElementById('unoStatus').textContent='نوبت ربات مدرسه پرهیزگار...';
-  setTimeout(unoAI,1000);
-}
-function drawFromDeck(target){
-  if(unoState.deck.length===0){shuffle(unoState.deck);} // simplified
-  const card=unoState.deck.pop()||{color:'red',value:0,type:'number'};
-  if(target==='player') unoState.playerHand.push(card);
-  else unoState.aiHand.push(card);
-}
-function drawCard(){
-  if(unoState.turn!=='player'||unoState.gameOver) return;
-  drawFromDeck('player');
-  renderUno();
-  unoState.turn='ai'; document.getElementById('unoStatus').textContent='نوبت ربات مدرسه پرهیزگار...';
-  setTimeout(unoAI,1000);
-}
-function unoAI(){
-  if(unoState.gameOver) return;
-  const playable=unoState.aiHand.filter((_,i)=>canPlay(unoState.aiHand[i]));
-  if(playable.length===0){drawFromDeck('ai');renderUno();unoState.turn='player';document.getElementById('unoStatus').textContent='نوبت شما';return;}
-  const card=playable[Math.floor(Math.random()*playable.length)];
-  const idx=unoState.aiHand.indexOf(card);
-  unoState.aiHand.splice(idx,1);
-  unoState.topCard=card; unoState.pendingColor=null;
-  if(unoState.aiHand.length===0){endUno('ai');return;}
-  if(card.type==='wild'){unoState.pendingColor=['red','blue','green','yellow'][Math.floor(Math.random()*4)];renderUno();unoState.turn='player';document.getElementById('unoStatus').textContent='نوبت شما';return;}
-  if(unoState.aiHand.length===1) showNotif('💻 ربات مدرسه پرهیزگار: UNO! 🃏');
-  applyUnoAction(card,'ai');
-}
-function endUno(winner){
-  unoState.gameOver=true;
-  const msg=winner==='player'?`🎉 ${playerName} برنده شد! UNO!`:'💻 ربات مدرسه پرهیزگار برنده شد!';
-  document.getElementById('unoStatus').textContent=msg;
-  showNotif(msg,3000);
-}
-function resetUno(){document.getElementById('unoColorPick').classList.remove('show');initUno();}
-
 
 // ===== کد های منچ #غیرفعال =====
 const LUDO_COLORS = ['red','green','blue','yellow'];
@@ -3482,6 +3526,10 @@ window.addEventListener('load',()=>{
    document.getElementById('loadingScreen').classList.add('hide');
  },2200);
 
+ let savedGraphics = 'medium';
+ try { savedGraphics = localStorage.getItem('gh_graphics_quality') || 'medium'; } catch(e) {}
+ applyGraphicsQuality(savedGraphics, false);
+
  const savedTheme = localStorage.getItem('gh_theme');
  if(savedTheme==='light'){
    document.body.classList.add('light-mode');
@@ -3611,41 +3659,21 @@ function renderSnakePlayers(){
 }
 
 
-/* ===== تنظیمات گرافیک. ===== */
-function changeGraphics(level){
-
-  const root=document.documentElement;
-
-  if(level==='ultra'){
-    root.style.setProperty('--shadowPower','0 0 40px rgba(255,215,0,.35)');
-    document.body.style.filter='contrast(1.05) saturate(1.1)';
-
-    document.querySelectorAll('*').forEach(el=>{
-      el.style.backdropFilter='blur(20px)';
-    });
-
-  }else if(level==='high'){
-
-    root.style.setProperty('--shadowPower','0 0 20px rgba(255,215,0,.25)');
-    document.body.style.filter='contrast(1) saturate(1)';
-
-    document.querySelectorAll('*').forEach(el=>{
-      el.style.backdropFilter='blur(10px)';
-    });
-
-  }else{
-
-    root.style.setProperty('--shadowPower','none');
-    document.body.style.filter='none';
-
-    document.querySelectorAll('*').forEach(el=>{
-      el.style.backdropFilter='none';
-    });
+/* ===== کیفیت گرافیک: کم / متوسط / زیاد ===== */
+function applyGraphicsQuality(level, notify=false){
+  const allowed = ['low','medium','high'];
+  if(!allowed.includes(level)) level = 'medium';
+  document.body.classList.remove('graphics-low','graphics-medium','graphics-high');
+  document.body.classList.add('graphics-' + level);
+  const select = document.getElementById('graphicsQuality');
+  if(select && select.value !== level) select.value = level;
+  try { localStorage.setItem('gh_graphics_quality', level); } catch(e) {}
+  if(notify && typeof showNotif === 'function') {
+    const labels = {low:'کم', medium:'متوسط', high:'زیاد'};
+    showNotif('کیفیت گرافیک روی حالت ' + labels[level] + ' تنظیم شد');
   }
-
-  showNotif('کیفیت گرافیک روی ' + level.toUpperCase() + ' تنظیم شد');
 }
-
+function changeGraphics(level){ applyGraphicsQuality(level, true); }
 
 // Ludo touch support
 document.addEventListener('DOMContentLoaded', () => {
@@ -3662,243 +3690,250 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// ===== اچیومنت پیشرفته =====
+// ===== سیستم یکپارچه و ذخیره‌شوندهٔ اچیومنت‌ها =====
+const GH_ACHIEVEMENTS_KEY = 'gh_achievements_v2';
+const GH_ACHIEVEMENT_PROGRESS_KEY = 'gh_achievement_progress_v2';
 const achievementData = {
- firstWin:{title:'اولین برد',desc:'اولین پیروزی'},
- gamer:{title:'بازیکن باتجربه 🎮',desc:'۵ بازی مختلف'},
- hardcore:{title:'همیشه در بازی ☠️',desc:'۱۰ بازی مختلف'},
- nolife:{title:'غرق بازی 💀',desc:'۲۰ بار اجرای بازی'},
-
- rpsMaster:{title:'استاد سنگ‌کاغذ‌قیچی ✊',desc:'۵ برد'},
- rpsLegend:{title:'برنده همیشگی 👑',desc:'۱۰ برد'},
- rpsGod:{title:'دست طلایی ⚡',desc:'۲۰ برد'},
-
- penaltyKing:{title:'ضربه‌زن دقیق ⚽',desc:'۳ گل'},
- penaltyGod:{title:'پنالتی‌زن حرفه‌ای 🥶',desc:'۵ گل'},
- sniper:{title:'ضربه دقیق 🎯',desc:'۱۰ گل'},
-
- snakeWinner:{title:'قهرمان مار و پله 🐍',desc:'رسیدن به ۱۰۰'},
- lucky:{title:'خوش شانس 🍀',desc:'۳ نردبان'},
- unlucky:{title:'بدشانس 💢',desc:'۳ مار'},
-
- chessWarrior:{title:'جنگجوی شطرنج ♟️',desc:'ورود به شطرنج'},
- thinker:{title:'استاد فکر 🧠',desc:'۵ بار شطرنج'},
-
- codMaster:{title:'جنگجوی حرفه‌ای 🔫',desc:'۵۰ امتیاز'},
- codLegend:{title:'پیروز میدان 💀',desc:'۱۰۰ امتیاز'},
- terminator:{title:'شکست‌ناپذیر 🤖',desc:'۲۰۰ امتیاز'},
-
- unoPlayer:{title:'استاد اونو 🃏',desc:'اجرای اونو'},
- cardShark:{title:'استاد کارت 🦈',desc:'۵ بار اونو'},
-
- ludoPlayer:{title:'بازیکن ماهر 🎲',desc:'اجرای منچ'},
-
- ultimateKing:{
-   title:'👑 افتخار کامل 👑',
-   desc:'تمام اچیومنت‌ها را باز کردی'
- }
+  firstGame:{title:'شروع ماجراجویی 🎮',desc:'برای اولین بار یک بازی را اجرا کن'},
+  variety3:{title:'بازی‌گرد حرفه‌ای 🧭',desc:'سه بازی متفاوت را اجرا کن'},
+  variety6:{title:'استاد گیم‌ها 🏆',desc:'شش بازی متفاوت را اجرا کن'},
+  rpsFirstWin:{title:'اولین پیروزی ✊',desc:'یک دور سنگ‌کاغذ‌قیچی را ببر'},
+  rpsWins5:{title:'دست برتر 🤜',desc:'در مجموع پنج دور سنگ‌کاغذ‌قیچی را ببر'},
+  rpsWins15:{title:'افسانهٔ سه‌گانه 👑',desc:'در مجموع پانزده دور سنگ‌کاغذ‌قیچی را ببر'},
+  dozFirstWin:{title:'سه‌تایی طلایی ⭕',desc:'یک بازی دوز را ببر'},
+  dozWins5:{title:'سلطان دوز 🧠',desc:'پنج بازی دوز را ببر'},
+  chessFirstMove:{title:'حرکت اول ♟️',desc:'یک حرکت قانونی با مهرهٔ سفید انجام بده'},
+  chessMoves10:{title:'فکر استراتژیک ♜',desc:'ده حرکت قانونی با مهرهٔ سفید انجام بده'},
+  penaltyFirstGoal:{title:'اولین گل ⚽',desc:'در بازی پنالتی یک گل بزن'},
+  penaltyGoals5:{title:'تمام‌کننده 🎯',desc:'در مجموع پنج گل پنالتی بزن'},
+  penaltyMatchWin:{title:'قهرمان پنالتی 🥇',desc:'یک مسابقهٔ پنالتی را ببر'},
+  snakesLaddersWin:{title:'رسیدن به قله 🐍',desc:'با بازیکن خودت در مار و پله به خانهٔ ۱۰۰ برس'},
+  classicSnakeFood1:{title:'شکارچی غذا 📟',desc:'در مار بازی نوکیا یک غذا بخور'},
+  classicSnakeFood10:{title:'مار رشدکرده 🟩',desc:'در یک دور مار بازی ده غذا بخور'},
+  classicSnakeFood25:{title:'مار نوکیا افسانه‌ای 🐍',desc:'در یک دور مار بازی بیست‌وپنج غذا بخور'},
+  codFirstKill:{title:'اولین حذف 🔫',desc:'در ندای وظیفه اولین دشمن را حذف کن'},
+  codVeteran:{title:'سرباز کارکشته 💥',desc:'در یک دور ندای وظیفه به ۱۰۰۰ امتیاز برس'},
+  ultimateKing:{title:'افتخار کامل 👑',desc:'تمام اچیومنت‌های دیگر را باز کن'}
 };
-
-const achievements = {};
-Object.keys(achievementData).forEach(k=>achievements[k]=false);
-
+const achievements = Object.create(null);
+Object.keys(achievementData).forEach(id=>achievements[id]=false);
+let ghAchievementStats = {
+  openedGames:[], gameLaunches:0, rpsWins:0, dozWins:0, chessMoves:0,
+  penaltyGoals:0, penaltyMatchWins:0, classicSnakeBest:0, codBestScore:0
+};
+(function loadAchievementData(){
+  try{
+    const savedAchievements=JSON.parse(localStorage.getItem(GH_ACHIEVEMENTS_KEY)||'{}');
+    Object.keys(achievementData).forEach(id=>achievements[id]=savedAchievements[id]===true);
+    const savedStats=JSON.parse(localStorage.getItem(GH_ACHIEVEMENT_PROGRESS_KEY)||'{}');
+    ghAchievementStats={...ghAchievementStats,...savedStats};
+    if(!Array.isArray(ghAchievementStats.openedGames)) ghAchievementStats.openedGames=[];
+  }catch(e){}
+})();
+function saveAchievementData(){
+  try{
+    localStorage.setItem(GH_ACHIEVEMENTS_KEY,JSON.stringify(achievements));
+    localStorage.setItem(GH_ACHIEVEMENT_PROGRESS_KEY,JSON.stringify(ghAchievementStats));
+  }catch(e){}
+}
+function getAchievementProgress(id){
+  const stats=ghAchievementStats;
+  const seen=new Set(stats.openedGames);
+  const progress={
+    firstGame:[Math.min(stats.gameLaunches,1),1,'بازی'],
+    variety3:[Math.min(seen.size,3),3,'بازی متفاوت'],
+    variety6:[Math.min(seen.size,6),6,'بازی متفاوت'],
+    rpsFirstWin:[Math.min(stats.rpsWins,1),1,'برد'],
+    rpsWins5:[Math.min(stats.rpsWins,5),5,'برد'],
+    rpsWins15:[Math.min(stats.rpsWins,15),15,'برد'],
+    dozFirstWin:[Math.min(stats.dozWins,1),1,'برد'],
+    dozWins5:[Math.min(stats.dozWins,5),5,'برد'],
+    chessFirstMove:[Math.min(stats.chessMoves,1),1,'حرکت'],
+    chessMoves10:[Math.min(stats.chessMoves,10),10,'حرکت'],
+    penaltyFirstGoal:[Math.min(stats.penaltyGoals,1),1,'گل'],
+    penaltyGoals5:[Math.min(stats.penaltyGoals,5),5,'گل'],
+    penaltyMatchWin:[Math.min(stats.penaltyMatchWins,1),1,'برد'],
+    snakesLaddersWin:[Math.min(stats.snakesLaddersWins||0,1),1,'برد'],
+    classicSnakeFood1:[Math.min(stats.classicSnakeBest,1),1,'غذا در یک دور'],
+    classicSnakeFood10:[Math.min(stats.classicSnakeBest,10),10,'غذا در یک دور'],
+    classicSnakeFood25:[Math.min(stats.classicSnakeBest,25),25,'غذا در یک دور'],
+    codFirstKill:[Math.min(stats.codBestScore,100),100,'امتیاز'],
+    codVeteran:[Math.min(stats.codBestScore,1000),1000,'امتیاز']
+  };
+  if(id==='ultimateKing'){
+    const normal=Object.keys(achievementData).filter(key=>key!=='ultimateKing');
+    return [normal.filter(key=>achievements[key]).length,normal.length,'اچیومنت'];
+  }
+  return progress[id]||null;
+}
 function renderAchievements(){
- const list = document.getElementById('achievementList');
- if(!list) return;
-
- list.innerHTML = '';
-
- Object.keys(achievementData).forEach(id=>{
-
-   const data = achievementData[id];
-   const unlocked = achievements[id];
-
-   const div = document.createElement('div');
-
-   div.className = 'achievement-card ' + (unlocked ? 'unlocked':'locked');
-
-   if(id === 'ultimateKing'){
-     div.classList.add('god-tier');
-   }
-
-   div.innerHTML = `
-     <div class="achievement-name">
-       ${unlocked ? '🏆':'🔒'}
-       <span class="${id==='ultimateKing' ? 'rgb-text':''}">
-         ${data.title}
-       </span>
-     </div>
-
-     <div class="achievement-desc2">${data.desc}</div>
-
-     <div class="achievement-state">
-       ${unlocked ? '✅ باز شده':'❌ قفل'}
-     </div>
-   `;
-
-   list.appendChild(div);
- });
+  const list=document.getElementById('achievementList');
+  if(!list) return;
+  list.innerHTML='';
+  const normalIds=Object.keys(achievementData).filter(id=>id!=='ultimateKing');
+  const unlockedCount=normalIds.filter(id=>achievements[id]).length;
+  const summary=document.createElement('div');
+  summary.className='achievement-card';
+  summary.innerHTML='<div class="achievement-name">پیشرفت کلی</div><div class="achievement-desc2">'+unlockedCount+' از '+normalIds.length+' اچیومنت باز شده</div>';
+  list.appendChild(summary);
+  Object.keys(achievementData).forEach(id=>{
+    const data=achievementData[id];
+    const unlocked=achievements[id]===true;
+    const progress=getAchievementProgress(id);
+    const card=document.createElement('div');
+    card.className='achievement-card '+(unlocked?'unlocked':'locked')+(id==='ultimateKing'?' god-tier':'');
+    const name=document.createElement('div');name.className='achievement-name';
+    const title=document.createElement('span');title.textContent=(unlocked?'🏆 ':'🔒 ')+data.title;
+    if(id==='ultimateKing')title.classList.add('rgb-text');
+    name.appendChild(title);card.appendChild(name);
+    const desc=document.createElement('div');desc.className='achievement-desc2';desc.textContent=data.desc;card.appendChild(desc);
+    if(progress && !unlocked){
+      const progressText=document.createElement('div');progressText.className='achievement-state';
+      progressText.textContent=progress[0]+' / '+progress[1]+' '+progress[2];card.appendChild(progressText);
+    }
+    const state=document.createElement('div');state.className='achievement-state';state.textContent=unlocked?'✅ باز شده':'🔒 قفل';card.appendChild(state);
+    list.appendChild(card);
+  });
 }
-
 function unlockAchievement(id){
-
- if(achievements[id]) return;
-
- achievements[id] = true;
-
- const popup = document.getElementById('achievementPopup');
-
- popup.innerHTML = `
-   <div class="achievement-title ${id==='ultimateKing' ? 'rgb-text':''}">
-      ${achievementData[id].title}
-   </div>
-
-   <div class="achievement-desc">
-      ${achievementData[id].desc}
-   </div>
- `;
-
- popup.classList.add('show');
-
- setTimeout(()=>{
-   popup.classList.remove('show');
- },4000);
-
- renderAchievements();
-
- try{
-   const sound = (function(){const a=new Audio(
-     id === 'ultimateKing'
-     ? 'https://actions.google.com/sounds/v1/cartoon/fireworks.ogg'
-     : 'https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg'
-   );a.dataset.soundKey="gameSound";return a;})();
-
-   sound.volume = 0.5;
-   sound.play();
- }catch(e){}
+  if(!Object.prototype.hasOwnProperty.call(achievementData,id) || achievements[id]) return false;
+  achievements[id]=true;
+  saveAchievementData();
+  const popup=document.getElementById('achievementPopup');
+  if(popup){
+    const title=id==='ultimateKing'?'<span class="rgb-text">'+achievementData[id].title+'</span>':achievementData[id].title;
+    popup.innerHTML='<div class="achievement-title">🏆 '+title+'</div><div class="achievement-desc">'+achievementData[id].desc+'</div>';
+    popup.classList.add('show');
+    setTimeout(()=>popup.classList.remove('show'),4000);
+  }
+  renderAchievements();
+  try{ if(typeof playSFX==='function') playSFX('magic',0.4); }catch(e){}
+  const normal=Object.keys(achievementData).filter(key=>key!=='ultimateKing');
+  if(id!=='ultimateKing' && normal.every(key=>achievements[key])) unlockAchievement('ultimateKing');
+  return true;
 }
-
-setTimeout(renderAchievements,500);
-
-let totalGamesOpened = 0;
-let totalLaunches = 0;
-let unoCount = 0;
-let chessCount = 0;
-
-const oldOpenGame = openGame;
-
-openGame = function(game){
-
- totalGamesOpened++;
- totalLaunches++;
-
- if(totalGamesOpened >= 5) unlockAchievement('gamer');
- if(totalGamesOpened >= 10) unlockAchievement('hardcore');
- if(totalLaunches >= 20) unlockAchievement('nolife');
-
- if(game === 'uno'){
-   unoCount++;
-   unlockAchievement('unoPlayer');
-
-   if(unoCount >= 5){
-     unlockAchievement('cardShark');
-   }
- }
-
- if(game === 'ludo'){
-   unlockAchievement('ludoPlayer');
- }
-
- if(game === 'chess'){
-   chessCount++;
-
-   unlockAchievement('chessWarrior');
-
-   if(chessCount >= 5){
-     unlockAchievement('thinker');
-   }
- }
-
- oldOpenGame(game);
+function recordOpenedGame(game){
+  const validGames=['rps','doz','chess','snake','snakeClassic','penalty','cod'];
+  if(!validGames.includes(game)) return;
+  ghAchievementStats.gameLaunches++;
+  if(!ghAchievementStats.openedGames.includes(game)) ghAchievementStats.openedGames.push(game);
+  saveAchievementData();
+  unlockAchievement('firstGame');
+  if(ghAchievementStats.openedGames.length>=3) unlockAchievement('variety3');
+  if(ghAchievementStats.openedGames.length>=6) unlockAchievement('variety6');
+  renderAchievements();
+}
+function updateClassicSnakeAchievements(score){
+  ghAchievementStats.classicSnakeBest=Math.max(Number(ghAchievementStats.classicSnakeBest)||0,Number(score)||0);
+  saveAchievementData();
+  if(score>=1) unlockAchievement('classicSnakeFood1');
+  if(score>=10) unlockAchievement('classicSnakeFood10');
+  if(score>=25) unlockAchievement('classicSnakeFood25');
+  renderAchievements();
+}
+function updateCodAchievements(){
+  const score=Number(document.getElementById('codScore')?.textContent)||0;
+  const previous=Number(ghAchievementStats.codBestScore)||0;
+  if(score>previous){
+    ghAchievementStats.codBestScore=score;
+    saveAchievementData();
+  }
+  if(score>=100) unlockAchievement('codFirstKill');
+  if(score>=1000) unlockAchievement('codVeteran');
+}
+const ghOriginalOpenGameForAchievements=openGame;
+openGame=function(game){
+  recordOpenedGame(game);
+  return ghOriginalOpenGameForAchievements(game);
 };
-
-const oldPlayRPS = playRPS;
-
-playRPS = function(choice){
-
- oldPlayRPS(choice);
-
- setTimeout(()=>{
-
-   const score = parseInt(document.getElementById('rpsPlayerScore')?.textContent || 0);
-
-   if(score >= 1) unlockAchievement('firstWin');
-   if(score >= 5) unlockAchievement('rpsMaster');
-   if(score >= 10) unlockAchievement('rpsLegend');
-   if(score >= 20) unlockAchievement('rpsGod');
-
- },300);
+const ghOriginalRPSForAchievements=playRPS;
+let ghRPSRoundPending=false;
+playRPS=function(choice){
+  // هر دور فقط یک‌بار اجرا می‌شود؛ جلوگیری از چندبار شمردن برد در کلیک‌های سریع.
+  if(ghRPSRoundPending) return;
+  ghRPSRoundPending=true;
+  const previous=Number(rpsScores.player)||0;
+  ghOriginalRPSForAchievements(choice);
+  setTimeout(()=>{
+    const current=Number(rpsScores.player)||0;
+    if(current>previous){
+      ghAchievementStats.rpsWins += current-previous;
+      saveAchievementData();
+      if(ghAchievementStats.rpsWins>=1) unlockAchievement('rpsFirstWin');
+      if(ghAchievementStats.rpsWins>=5) unlockAchievement('rpsWins5');
+      if(ghAchievementStats.rpsWins>=15) unlockAchievement('rpsWins15');
+      renderAchievements();
+    }
+    ghRPSRoundPending=false;
+  },650);
 };
-
-const oldShootPenalty = shootPenalty;
-
-shootPenalty = function(zone){
-
- oldShootPenalty(zone);
-
- setTimeout(()=>{
-
-   const goals = parseInt(document.getElementById('penaltyPlayerGoals')?.textContent || 0);
-
-   if(goals >= 3) unlockAchievement('penaltyKing');
-   if(goals >= 5) unlockAchievement('penaltyGod');
-   if(goals >= 10) unlockAchievement('sniper');
-
- },800);
+const ghOriginalEndDozForAchievements=endDoz;
+endDoz=function(result){
+  if(result==='player'){
+    ghAchievementStats.dozWins++;
+    saveAchievementData();
+    if(ghAchievementStats.dozWins>=1) unlockAchievement('dozFirstWin');
+    if(ghAchievementStats.dozWins>=5) unlockAchievement('dozWins5');
+  }
+  return ghOriginalEndDozForAchievements(result);
 };
-
-const oldRollDice = rollDice;
-
-rollDice = function(){
-
- oldRollDice();
-
- setTimeout(()=>{
-
-   const pos = document.getElementById('slP1Pos')?.textContent || '';
-
-   if(pos.includes('100')){
-     unlockAchievement('snakeWinner');
-   }
-
- },1200);
+const ghOriginalChessClickForAchievements=chessClick;
+chessClick=function(r,c){
+  let legalPlayerMove=false;
+  if(chessGame && chessTurn==='w' && selectedCell){
+    const [sr,sc]=selectedCell;
+    legalPlayerMove=getChessMoves(sr,sc).some(move=>move[0]===r&&move[1]===c);
+  }
+  const result=ghOriginalChessClickForAchievements(r,c);
+  if(legalPlayerMove){
+    ghAchievementStats.chessMoves++;
+    saveAchievementData();
+    if(ghAchievementStats.chessMoves>=1) unlockAchievement('chessFirstMove');
+    if(ghAchievementStats.chessMoves>=10) unlockAchievement('chessMoves10');
+  }
+  return result;
 };
-
-setInterval(()=>{
-
- try{
-
-   const score = parseInt(document.getElementById('codScore')?.textContent || 0);
-
-   if(score >= 50) unlockAchievement('codMaster');
-   if(score >= 100) unlockAchievement('codLegend');
-   if(score >= 200) unlockAchievement('terminator');
-
-   const normal = Object.keys(achievementData).filter(a=>a!=='ultimateKing');
-
-   const allUnlocked = normal.every(a=>achievements[a]);
-
-   if(allUnlocked){
-     unlockAchievement('ultimateKing');
-   }
-
- }catch(e){}
-
-},1500);
-
-
-
-
+let ghLastObservedPenaltyGoals = 0;
+const ghOriginalUpdatePenaltyUIForAchievements=updatePenaltyUI;
+updatePenaltyUI=function(){
+  const result=ghOriginalUpdatePenaltyUIForAchievements();
+  const current=Math.max(0,Number(penaltyState?.playerGoals)||0);
+  if(current < ghLastObservedPenaltyGoals) ghLastObservedPenaltyGoals=0;
+  const scored=current-ghLastObservedPenaltyGoals;
+  if(scored>0){
+    ghAchievementStats.penaltyGoals+=scored;
+    saveAchievementData();
+    if(ghAchievementStats.penaltyGoals>=1) unlockAchievement('penaltyFirstGoal');
+    if(ghAchievementStats.penaltyGoals>=5) unlockAchievement('penaltyGoals5');
+  }
+  ghLastObservedPenaltyGoals=current;
+  renderAchievements();
+  return result;
+};
+const ghOriginalEndPenaltyForAchievements=endPenalty;
+endPenalty=function(){
+  const won=Number(penaltyState?.playerGoals)>Number(penaltyState?.aiGoals);
+  const result=ghOriginalEndPenaltyForAchievements();
+  if(won){
+    ghAchievementStats.penaltyMatchWins++;
+    saveAchievementData();
+    unlockAchievement('penaltyMatchWin');
+  }
+  renderAchievements();
+  return result;
+};
+const ghOriginalMovePlayerForAchievements=movePlayer;
+movePlayer=function(player,roll){
+  const result=ghOriginalMovePlayerForAchievements(player,roll);
+  if(player===0 && Array.isArray(slPositions) && slPositions[0]>=100){
+    ghAchievementStats.snakesLaddersWins=(Number(ghAchievementStats.snakesLaddersWins)||0)+1;
+    saveAchievementData();
+    unlockAchievement('snakesLaddersWin');
+  }
+  return result;
+};
+setInterval(updateCodAchievements,1000);
+setTimeout(renderAchievements,250);
 
 // ===== صدا های مورد نیاز =====
 const sfx = {
@@ -3928,59 +3963,6 @@ document.querySelectorAll('button').forEach(btn=>{
    playSFX('click',0.25);
  });
 });
-
-// ===== ادامه اچیومنت ها =====
-achievementData.speedRunner = {
- title:'برق‌آسا ⚡',
- desc:'خیلی سریع بین بازی‌ها جابه‌جا شدی'
-};
-
-achievementData.buttonSpam = {
- title:'دست آهنی 😂',
- desc:'خیلی روی دکمه‌ها کلیک کردی'
-};
-
-achievementData.immortal = {
- title:'خستگی‌ناپذیر 🧬',
- desc:'خیلی طولانی بازی کردی'
-};
-
-achievementData.richPlayer = {
- title:'امتیاز جمع‌کن 💰',
- desc:'امتیاز زیادی جمع کردی'
-};
-
-achievementData.soundLover = {
- title:'اهل هیجان 🔊',
- desc:'از سیستم صوتی بازی استفاده کردی'
-};
-
-achievementData.darkLord = {
- title:'ارباب تاریکی 🌑',
- desc:'دارک مود را فعال کردی'
-};
-
-achievementData.lightKing = {
- title:'پادشاه نور ☀️',
- desc:'لایت مود را فعال کردی'
-};
-
-achievementData.explorer = {
- title:'ماجراجو 🧭',
- desc:'تقریباً همه منوها را دیدی'
-};
-
-achievementData.addicted = {
- title:'عاشق بازی 🎮',
- desc:'خیلی زیاد بازی کردی'
-};
-
-achievementData.ultraInstinct = {
- title:'Ultra Instinct 🥶',
- desc:'اچیومنت‌های افسانه‌ای را باز کردی'
-};
-
-renderAchievements();
 
 // ===== ساند افکت های خود بازی =====
 
@@ -4053,88 +4035,6 @@ setInterval(()=>{
    }
  }catch(e){}
 },3000);
-
-// ===== راهنمای اچیومنت =====
-
-let clickCounter = 0;
-let gameSwitchCounter = 0;
-
-document.addEventListener('click',()=>{
-
- clickCounter++;
-
- if(clickCounter >= 100){
-   unlockAchievement('buttonSpam');
- }
-
- if(clickCounter >= 300){
-   unlockAchievement('addicted');
- }
-
- if(clickCounter >= 500){
-   unlockAchievement('ultraInstinct');
- }
-});
-
-const oldOpenGameUltra = openGame;
-
-openGame = function(game){
-
- gameSwitchCounter++;
-
- if(gameSwitchCounter >= 15){
-   unlockAchievement('speedRunner');
- }
-
- unlockAchievement('explorer');
-
- oldOpenGameUltra(game);
-};
-
-// تم و رنگ اچیومنت
-const oldToggleTheme = toggleTheme;
-
-toggleTheme = function(){
-
- oldToggleTheme();
-
- const isLight = document.body.classList.contains('light-mode');
-
- if(isLight){
-   unlockAchievement('lightKing');
- }else{
-   unlockAchievement('darkLord');
- }
-
- playSFX('epic',0.3);
-};
-
-// نشان دهده مدت زمان بازی
-setTimeout(()=>{
- unlockAchievement('immortal');
-},600000);
-
-// صدای اچیومنت
-setTimeout(()=>{
- unlockAchievement('soundLover');
-},15000);
-
-// آنتی چیت
-setInterval(()=>{
-
- try{
-
-   const cod = parseInt(document.getElementById('codScore')?.textContent || 0);
-   const rps = parseInt(document.getElementById('rpsPlayerScore')?.textContent || 0);
-
-   if((cod + rps) >= 150){
-     unlockAchievement('richPlayer');
-   }
-
- }catch(e){}
-
-},4000);
-
 
 // ===== تنظیمات سیستم =====
 let soundEnabled = true;
